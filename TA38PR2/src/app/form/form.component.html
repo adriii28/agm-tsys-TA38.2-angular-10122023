@@ -1,0 +1,57 @@
+<h1 class="text-center my-4">Formulario de contacto</h1>
+<form [formGroup]="myForm" (submit)="onSubmit()">
+  <div class="row mb-3">
+    <label for="inputName" class="col-sm-2 col-form-label fw-bold"
+      >Nombre</label
+    >
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputName" formControlName="name" placeholder="Nombre y apellido"/>
+    </div>
+    @if (myForm.get('name')?.invalid){
+        <div class="col-sm-10 offset-sm-2 text-danger">Por favor, ingrese un nombre.</div>
+    }
+  </div>
+
+  <div class="row mb-3">
+    <label for="inputEmail" class="col-sm-2 col-form-label fw-bold"
+      >Email</label
+    >
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="inputEmail" formControlName="mail" placeholder="ejmplo@dominio.com"/>
+    </div>
+    @if (myForm.get('mail')?.hasError('email')){
+        <div class="col-sm-10 offset-sm-2 text-danger">Introduzca un email valido</div>
+    }
+  </div>
+
+  <div class="row mb-3">
+    <label
+      for="exampleFormControlTextarea"
+      class="col-sm-2 col-form-label fw-bold"
+      >Mensaje</label
+    >
+    <div class="col-sm-10">
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea"
+        rows="3"
+        formControlName="msg"
+      ></textarea>
+    </div>
+    @if (myForm.get('msg')?.invalid){
+        <div class="col-sm-10 offset-sm-2 text-danger">Introduzca un mensaje</div>
+    }
+  </div>
+
+  <div class="row mb-3">
+    <label for="inputSpam" class="col-sm-2 col-form-label fw-bold">2 + 3 = ?</label>
+    <div class="col-sm-10">
+        <input type="email" class="form-control" id="inputEmail" formControlName="spam" placeholder="Respuesta"/>
+      </div>
+    @if (myForm.get('spam')?.invalid){
+        <div class="col-sm-10 offset-sm-2 text-danger">Validacion anti-spam incorrecta</div>
+    }
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
