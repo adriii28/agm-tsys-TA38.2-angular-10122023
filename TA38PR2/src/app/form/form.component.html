@@ -48,10 +48,14 @@
     <div class="col-sm-10">
         <input type="email" class="form-control" id="inputEmail" formControlName="spam" placeholder="Respuesta"/>
       </div>
-    @if (myForm.get('spam')?.invalid){
+    @if (myForm.get('spam')?.invalid ){
         <div class="col-sm-10 offset-sm-2 text-danger">Validacion anti-spam incorrecta</div>
     }
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  @if (myForm.get('spam')?.value !== 5) {
+    <button type="submit" [disabled]="false" class="btn btn-primary">Submit</button>
+  } @else {
+    <button type="submit" [disabled]="true" class="btn btn-primary">Submit</button>
+  }
 
 </form>
